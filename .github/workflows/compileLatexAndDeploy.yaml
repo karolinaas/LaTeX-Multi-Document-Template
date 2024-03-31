@@ -28,25 +28,33 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
-      - name: Compile LaTeX document
+      - name: Compile LaTeX documents
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
+          root_file: |
+            Document1/doc1.tex
+            Document2/doc2.tex
+            Document3/doc3.tex
           latexmk_use_xelatex: true
           latexmk_shell_escape: true
+          work_in_root_file_dir: true
+          continue_on_error: true
       - name: Generate redirect page
         run: |
           mkdir public
-          mv main.pdf ./public/
+          mv Document1/doc1.pdf ./public/
+          mv Document2/doc2.pdf ./public/
+          mv Document3/doc3.pdf ./public/
           cat > ./public/index.html <<EOL
           <!doctype html>
           <html>
             <head>
-              <meta http-equiv="refresh" content="0;url=./main.pdf" />
-              <title>Wait for redirect!</title>
+              <title>Rozcestník</title>
             </head>
             <body>
-              <p><a href="./main.pdf">You should've been redirected to here :P</a></p>
+              <p><a href="./Document1/doc1.pdf">Document 1</a></p>
+              <p><a href="./Document2/doc2.pdf">Document 2</a></p>
+              <p><a href="./Document3/doc3.pdf">Document 3</a></p>
             </body>
           </html>
           EOL
