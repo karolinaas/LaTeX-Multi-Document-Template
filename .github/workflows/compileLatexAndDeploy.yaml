@@ -52,9 +52,9 @@ jobs:
               <title>Rozcestník</title>
             </head>
             <body>
-              <p><a href="./Document1/doc1.pdf">Document 1</a></p>
-              <p><a href="./Document2/doc2.pdf">Document 2</a></p>
-              <p><a href="./Document3/doc3.pdf">Document 3</a></p>
+              <p><a href="./doc1.pdf">Document 1</a></p>
+              <p><a href="./doc2.pdf">Document 2</a></p>
+              <p><a href="./doc3.pdf">Document 3</a></p>
             </body>
           </html>
           EOL
